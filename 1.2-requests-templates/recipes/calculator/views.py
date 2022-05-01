@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 DATA = {
     'omlet': {
@@ -28,3 +29,15 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+
+def recipes(request, user_recipe):
+    context = {}
+    if (user_recipe in DATA):
+        context['recipe'] = DATA[user_recipe].copy()
+        if 'servings' in request.GET:
+            quantity = int(request.GET['servings'])
+            for ingredient, amount in context['recipe'].items():
+                context['recipe'][ingredient] = amount * quantity
+
+    return render(request, 'index.html', context)
