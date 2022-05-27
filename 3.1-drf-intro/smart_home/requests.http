@@ -54,7 +54,7 @@ Content-Type: application/json
 
 # добавление измерения
 POST {{baseUrl}}/measurements/
-Content-Type:  application/json/json
+Content-Type:  multipart/form-data
 
 {
   "sensor": 8,

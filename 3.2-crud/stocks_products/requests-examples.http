@@ -7,8 +7,8 @@ POST {{baseUrl}}/products/
 Content-Type: application/json
 
 {
-  "title": "Помидор",
-  "description": "Лучшие помидоры на рынке"
+  "title": "Помидорка",
+  "description": "Лучшая капуста в городе"
 }
 
 ###
@@ -20,23 +20,23 @@ Content-Type: application/json
 ###
 
 # обновление продукта
-PATCH {{baseUrl}}/products/1/
+PATCH {{baseUrl}}/products/3/
 Content-Type: application/json
 
 {
-  "description": "Самые сочные и ароматные помидорки"
+  "description": "Лучшая капуста в городе"
 }
 
 ###
 
 # удаление продукта
-DELETE {{baseUrl}}/products/1/
+DELETE {{baseUrl}}/products/5/
 Content-Type: application/json
 
 ###
 
 # поиск продуктов по названию и описанию
-GET {{baseUrl}}/products/?search=помидор
+GET {{baseUrl}}/products/?search=Помидор
 Content-Type: application/json
 
 ###
@@ -46,7 +46,7 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": "13 адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
   "positions": [
     {
       "product": 2,
@@ -63,22 +63,57 @@ Content-Type: application/json
 
 ###
 
-# обновляем записи на складе
-PATCH {{baseUrl}}/stocks/4/
+# создание склада
+POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
+  "address": "1 мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "positions": 
+    [{
+      "product": 4,
+      "quantity": 250,
+      "price": 120.50
+    }
+    ]
+}
+
+###
+
+# обновляем записи на складе
+PATCH {{baseUrl}}/stocks/13/
+Content-Type: application/json
+
+{ 
+  
   "positions": [
     {
       "product": 2,
-      "quantity": 100,
+      "quantity": 110,
       "price": 130.80
     },
     {
       "product": 3,
-      "quantity": 243,
+      "quantity": 300,
       "price": 145
     }
+  ]
+}
+###
+
+# обновляем записи на складе
+PATCH {{baseUrl}}/stocks/6/
+Content-Type: application/json
+
+{ 
+  
+  "positions": [
+    {
+      "product": 1,
+      "quantity": 100,
+      "price": 130.80
+    }
+   
   ]
 }
 
