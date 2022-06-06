@@ -8,7 +8,8 @@ class AdvertisementFilter(filters.FilterSet):
 
     creator = filters.NumberFilter(field_name='creator_id')
     created_at = filters.DateFromToRangeFilter()
+    status = filters.CharFilter()
 
     class Meta:
         model = Advertisement
-        fields = ('creator', 'created_at',)
+        fields = ('creator', 'created_at', 'status')
